@@ -180,14 +180,10 @@ function main() {
         let intervalId = null;
 
         let hide_time = 0;
-        let hide_counter_state = 0;
-        let hide_subtotal_time_state = 0;
 
         let on_visibility_change = () => {
             if (document.hidden) {
                 hide_time = Date.now();
-                hide_counter_state = counter;
-                hide_subtotal_time_state = subtotal_time;
             }
             else if (timer_running) {
                 let elapsed_sec = Math.trunc((Date.now() - hide_time) / 1000);
@@ -199,7 +195,7 @@ function main() {
         document.addEventListener("visibilitychange", on_visibility_change);
 
         cb_start_pause.onclick = () => {
-            console.debug("Start-Stop clicked");
+            // console.debug("Start-Stop clicked");
             if (timer_running === false) {
                 timer_running = true;
 
@@ -212,12 +208,16 @@ function main() {
                 intervalId = setInterval(() => {
                     counter++;
                     subtotal_time++;
+                    
+                    // Every 60 seconds save time to DB
+                    if (counter % 60 === 0) updateTime(db, id, subtotal_time);
+
                     card_current_time.innerText = secToStr(counter);
                     card_subtotal_time.innerText = secToStr(subtotal_time);
                 }, 1000);
             }
             else {
-                console.debug("Start-Stop clicked - stop");
+                // console.debug("Start-Stop clicked - stop");
                 timer_running = false;
 
                 cb_start_pause.setAttribute("data-timer-running", false);
