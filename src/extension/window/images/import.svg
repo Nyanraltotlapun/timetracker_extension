@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="icon" width="800px" height="800px" version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <title>Import Button</title>
+    <path d="m864 885h-683c-46.9 0-85.3-38.4-85.3-85.3v-512c0-46.9 38.4-85.3 85.3-85.3h683c46.9 0 85.3 38.4 85.3 85.3v512c0 46.9-38.4 85.3-85.3 85.3z" fill="#f8bbd0"/>
+    <path d="m523 751-192-228h384z" fill="#e91e63"/>
+    <path d="m459 629v-491h128v491z" fill="#e91e63"/>
+</svg>

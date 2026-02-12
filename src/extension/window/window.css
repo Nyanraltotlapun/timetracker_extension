@@ -14,18 +14,78 @@ footer {
     padding: 2rem;
 }
 
+#main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #add-section {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.43rem;
-  height: 2.7rem;
+  height: 2.6rem;
+}
+
+#menu-section {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  justify-self: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  background-color: #ed556408;
+  border: 1px solid #d55642;
+  border-radius: 2px;
+
+
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+}
+
+#menu-section.show {
+  height: 3rem;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.3s ease-in-out;
 }
 
 #add-button {
-  height: 2.7rem;
-  width: 2.7rem;
+  aspect-ratio: 1;
+  height: inherit;
+  width: auto;
   background-image: url("images/add.svg");
+}
+
+#menu-button {
+  aspect-ratio: 1;
+  height:inherit;
+  width: auto;
+  background-image: url("images/menu.svg");
+
+}
+
+
+#export-button {
+  aspect-ratio: 1;
+  height: auto;
+  width: auto;
+  visibility: visible;
+  background-image: url("images/export.svg");
+}
+
+#import-button {
+  aspect-ratio: 1;
+  height: auto;
+  width: auto;
+  background-image: url("images/import.svg");
 }
 
 #title {
@@ -63,15 +123,18 @@ footer {
   background-image: url("images/reset.svg");
 }
 
+.card-button {
+  aspect-ratio: 1;
+  height:inherit;
+  width: auto;
+  margin: 0.0616rem 0.188rem;
+}
 
 .img-button {
-  height: 2.22rem;
-  width: 2.22rem;
-  margin: 0.0616rem 0.188rem;
   background-size: 100%;
   border: none;
-  transition: filter 0.4s ease;
   background-color: transparent;
+  transition: filter 0.4s ease;
 }
 
 .img-button:hover {
@@ -85,6 +148,7 @@ footer {
 
 .tt-button-section {
   margin-top: 16px;
+  height: 2.22rem;
 }
 
 .button-left {
@@ -95,13 +159,6 @@ footer {
 .button-right {
   float: right;
   margin-right: 0px;
-}
-
-#main-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .tt-list {

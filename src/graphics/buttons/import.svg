@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 1024 1024"
+   class="icon"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="import-svgrepo-com.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title3">Import Button</title>
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1"
+     showborder="false"
+     inkscape:zoom="0.89875"
+     inkscape:cx="400.55633"
+     inkscape:cy="399.44367"
+     inkscape:window-width="1556"
+     inkscape:window-height="969"
+     inkscape:window-x="44"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <path
+     d="M 864,885.33333 H 181.33333 C 134.4,885.33333 96,846.93333 95.999999,800 V 288 c 0,-46.93333 38.400001,-85.33333 85.333331,-85.33333 H 864 c 46.93333,0 85.33333,38.4 85.33333,85.33333 v 512 c 0,46.93333 -38.4,85.33333 -85.33333,85.33333 z"
+     fill="#f8bbd0"
+     id="path1"
+     sodipodi:insensitive="true" />
+  <path
+     d="m 522.66667,750.93333 -192,-228.26666 h 384 z"
+     fill="#e91e63"
+     id="path2"
+     sodipodi:insensitive="true" />
+  <path
+     d="M 458.66667,629.33333 V 138.66667 h 128 v 490.66666 z"
+     fill="#e91e63"
+     id="path3"
+     sodipodi:insensitive="true" />
+  <metadata
+     id="metadata3">
+    <rdf:RDF>
+      <cc:License
+         rdf:about="http://artlibre.org/licence/lal">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+      </cc:License>
+      <cc:Work
+         rdf:about="">
+        <cc:license
+           rdf:resource="http://artlibre.org/licence/lal" />
+        <dc:title>Import Button</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

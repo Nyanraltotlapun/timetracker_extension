@@ -34,12 +34,32 @@ function main() {
 
         getRecords(db);
         initAddButton(db);
+        initMenuSection(db);
 
         // save jobs status in case of page close or unload.
         window.addEventListener("beforeunload", (e) => {
             document.querySelectorAll(".start-pause-button[data-timer-running=true]")
                 .forEach(element => element.onclick());
         });
+    }
+
+    function initMenuSection(db) {
+        let menu_button = document.getElementById("menu-button");
+        let menu_section = document.getElementById("menu-section");
+        let export_button = document.getElementById("export-button");
+        let import_button = document.getElementById("import-button");
+
+        menu_button.onclick = () => {
+            if (menu_section.classList.toggle("show")) {
+                console.log("Toggle show!");
+            }
+            else
+            {
+                console.log("Toggle Hide!");
+            }
+        }
+        menu_button.disabled = false;
+
     }
 
     function secToStr(seconds) {
@@ -75,6 +95,41 @@ function main() {
         }
     }
 
+
+    function export_db(db) {
+        let data_obj = {
+            date_time: (new Date()).toISOString(),
+            trackers: [],
+        };
+
+        let objectStore = db.transaction(["trackers"]).objectStore("trackers");
+        objectStore.openCursor().onsuccess = (e) => {
+            let cursor = e.target.result;
+            if (cursor) {
+                data_obj.trackers.push({
+                    id: cursor.key,
+                    title: cursor.value.title,
+                    time: cursor.value.time,
+                });
+                cursor.continue();
+            }
+            // else
+            if (data_obj.trackers.length > 0) {
+                let json_string = JSON.stringify(data_obj, null, 4);
+                let blob = new Blob([json_string], { type: 'application/json' });
+                let blob_url = URL.createObjectURL(blob);
+                let a = document.createElement("a");
+                a.href = blob_url;
+                a.download = `time_tracker_export-${new Date().toISOString()}.json`;
+                a.click();
+                URL.revokeObjectURL(blob_url);
+            }
+            else {
+                alert("No data to export.");
+            }
+        }
+
+    }
 
 
     /*
@@ -208,7 +263,7 @@ function main() {
                 intervalId = setInterval(() => {
                     counter++;
                     subtotal_time++;
-                    
+
                     // Every 60 seconds save time to DB
                     if (counter % 60 === 0) updateTime(db, id, subtotal_time);
 
