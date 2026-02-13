@@ -1,5 +1,7 @@
+# Ignore manifest as it changed based in the build process and stored for long time only in development process
+src/extension/manifest.json
 
-
+# Ignore distribution files and private keys
 dist/
 *.xpi
 .pem
