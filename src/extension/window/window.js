@@ -71,7 +71,7 @@ function main() {
                 let file = e.target.files[0];
                 // Reset the input value to allow same file selection
                 e.target.value = null;
-                
+
                 let reader = new FileReader();
                 reader.onload = (e) => {
                     import_db(db, e.target.result);
