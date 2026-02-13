@@ -169,6 +169,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-inline-start: 0; /* override default padding for ul element */
 }
 
 .tt-list > li {
