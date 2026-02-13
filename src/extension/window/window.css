@@ -82,6 +82,7 @@ footer {
   height: inherit;
   width: auto;
   background-image: url("images/add.svg");
+  cursor: pointer;
 }
 
 #menu-button {
@@ -89,6 +90,7 @@ footer {
   height: inherit;
   width: auto;
   background-image: url("images/menu.svg");
+  cursor: pointer;
 }
 
 #export-button {
@@ -97,6 +99,7 @@ footer {
   width: auto;
   visibility: visible;
   background-image: url("images/export.svg");
+  cursor: pointer;
 }
 
 #import-button {
@@ -104,6 +107,7 @@ footer {
   height: auto;
   width: auto;
   background-image: url("images/import.svg");
+  cursor: pointer;
 }
 
 #title {
@@ -152,6 +156,7 @@ footer {
   border: none;
   background-color: transparent;
   transition: filter 0.4s ease;
+  cursor: pointer;
 }
 
 .img-button:hover {
