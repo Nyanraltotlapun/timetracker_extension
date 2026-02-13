@@ -12,6 +12,22 @@
   --border-color: #f2f2f2;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color: white;
+    --background-color: #2a2a2a;
+    --menu-background-color: #ed556408;
+    --shadow-color: black;
+
+    --primary-color: #54b265;
+    --secondary-color: #33a5d2;
+    --accent-color: #d55642;
+
+    --card-background-color: #3c3c3c;
+    --border-color: #4a4a4a;
+  }
+}
+
 body {
   background-color: var(--background-color);
   font-family: "Hack", monospace;
@@ -118,6 +134,8 @@ footer {
   padding-right: 0.5ch;
   transition-duration: 0.4s;
   outline: none;
+  background-color: var(--card-background-color);
+  color: var(--font-color);
 }
 
 #title:focus {
