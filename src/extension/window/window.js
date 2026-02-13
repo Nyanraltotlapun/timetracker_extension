@@ -54,8 +54,7 @@ function main() {
             if (menu_section.classList.toggle("show")) {
                 console.log("Toggle show!");
             }
-            else
-            {
+            else {
                 console.log("Toggle Hide!");
             }
         }
@@ -64,12 +63,16 @@ function main() {
         export_button.onclick = () => {
             export_db(db);
         }
+
         export_button.disabled = false;
 
         file_input.onchange = (e) => {
             if (e.target.files.length > 0) {
-                const file = e.target.files[0];
-                const reader = new FileReader();
+                let file = e.target.files[0];
+                // Reset the input value to allow same file selection
+                e.target.value = null;
+                
+                let reader = new FileReader();
                 reader.onload = (e) => {
                     import_db(db, e.target.result);
                 };
@@ -77,8 +80,12 @@ function main() {
                     console.error("Error reading file: ", e);
                     alert("Error reading file!");
                 };
-                reader.readAsText(file);
-                console.log('Selected file:', file.name);
+
+                let confirm_result = confirm("This will replace records if they present in import file. Do you wish to continue?");
+                if (confirm_result === true) {
+                    //console.debug('Selected file:', file.name);
+                    reader.readAsText(file);
+                }
             }
         }
 
@@ -144,7 +151,7 @@ function main() {
                 let blob_url = URL.createObjectURL(blob);
                 let a = document.createElement("a");
                 a.href = blob_url;
-                a.download = `time_tracker_export-${new Date().toISOString()}.json`;
+                a.download = `timetracker_export_${new Date().toISOString()}.json`;
                 a.click();
                 URL.revokeObjectURL(blob_url);
             }
@@ -158,7 +165,7 @@ function main() {
     function import_db(db, import_data) {
         let json_data = null;
         try {
-            json_data = JSON.parse(e.target.result);
+            json_data = JSON.parse(import_data);
         } catch (err) {
             console.error('Invalid JSON:', err);
             alert("Error reading file! (Invalid JSON)");
@@ -172,6 +179,8 @@ function main() {
                     console.error("Error importing record from json to DB: ", e);
                 };
             });
+            // refreshing window content
+            window.location.reload();
         }
     }
 
