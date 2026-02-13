@@ -1,6 +1,21 @@
+:root {
+  --font-color: black;
+  --background-color: #fafafa;
+  --menu-background-color: #ed556408;
+  --shadow-color: gray;
+
+  --primary-color: #54b265;
+  --secondary-color: #33a5d2;
+  --accent-color: #d55642;
+
+  --card-background-color: #ffffff;
+  --border-color: #f2f2f2;
+}
+
 body {
-  background-color: #fafafa;
+  background-color: var(--background-color);
   font-family: "Hack", monospace;
+  color: var(--font-color);
 }
 
 header {
@@ -35,8 +50,8 @@ footer {
   justify-self: center;
   gap: 0.6rem;
   margin-top: 1rem;
-  background-color: #ed556408;
-  border: 2px solid #d55642;
+  background-color: var(--menu-background-color);
+  border: 2px solid var(--accent-color);
   border-radius: 2px;
 
   height: 0;
@@ -94,7 +109,7 @@ footer {
 #title {
   height: 1.7rem;
   width: 25ch;
-  border: 2px solid #54b265;
+  border: 2px solid var(--primary-color);
   padding-left: 0.5ch;
   padding-right: 0.5ch;
   transition-duration: 0.4s;
@@ -102,8 +117,7 @@ footer {
 }
 
 #title:focus {
-  border-color: #33a5d2;
-  transition-duration: 0.4s;
+  border-color: var(--secondary-color);
 }
 
 .time-section {
@@ -141,11 +155,11 @@ footer {
 }
 
 .img-button:hover {
-  filter: drop-shadow(0px 0.188rem 0.188rem #363636);
+  filter: drop-shadow(0px 0.188rem 0.188rem var(--shadow-color));
 }
 
 .img-button:active {
-  filter: drop-shadow(0px 0.0616rem 0.0616rem #363636);
+  filter: drop-shadow(0px 0.0616rem 0.0616rem var(--shadow-color));
   transition: filter 0.2s ease;
 }
 
@@ -176,10 +190,10 @@ footer {
   display: flex;
   align-items: center;
   margin: 0.5rem;
-  border: 1px solid #54b265;
+  border: 1px solid var(--primary-color);
   border-radius: 2px;
-  box-shadow: 0px 2px 5px grey;
-  background-color: #ffffff;
+  box-shadow: 0px 2px 5px var(--shadow-color);
+  background-color: var(--card-background-color);
   height: auto;
   width: auto;
 }
@@ -190,6 +204,6 @@ footer {
   width: auto;
   border: solid;
   border-radius: 4px;
-  border-color: #f2f2f2;
+  border-color: var(--border-color);
   padding: 0.5rem;
 }
