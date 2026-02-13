@@ -8,7 +8,7 @@
    class="icon"
    version="1.1"
    id="svg3"
-   sodipodi:docname="export-svgrepo-com.svg"
+   sodipodi:docname="export.svg"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -30,23 +30,19 @@
      inkscape:current-layer="svg3"
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
-     inkscape:cx="368.28929"
+     inkscape:cx="367.17663"
      inkscape:cy="369.40195"
      inkscape:window-width="1556"
      inkscape:window-height="969" />
   <path
      d="M 871.46666,892.8 H 188.8 c -46.93334,0 -85.33334,-38.4 -85.33334,-85.33334 v -512 c 0,-46.93333 38.4,-85.33333 85.33334,-85.33333 h 682.66666 c 46.93334,0 85.33334,38.4 85.33334,85.33333 v 512 C 956.8,854.4 918.4,892.8 871.46666,892.8 Z"
      fill="#ffccbc"
-     id="path1"
-     sodipodi:insensitive="true" />
+     id="square"
+     style="stroke-width:16.64;stroke-dasharray:none;stroke:#000000;stroke-opacity:1"
+     inkscape:label="square" />
   <path
-     d="m 530.13333,131.2 192,228.26666 h -384 z"
-     fill="#ff5722"
-     id="path2"
-     sodipodi:insensitive="true" />
-  <path
-     d="M 466.13333,743.46666 V 252.8 h 128 v 490.66666 z"
-     fill="#ff5722"
-     id="path3"
-     sodipodi:insensitive="true" />
+     id="arrow"
+     d="M 530.1325 131.2 L 338.1325 359.4675 L 466.1325 359.4675 L 466.1325 743.4675 L 594.1325 743.4675 L 594.1325 359.4675 L 722.1325 359.4675 L 530.1325 131.2 z "
+     style="fill:#ff5722;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:16.64;stroke-dasharray:none"
+     inkscape:label="arrow" />
 </svg>

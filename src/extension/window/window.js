@@ -48,6 +48,7 @@ function main() {
         let menu_section = document.getElementById("menu-section");
         let export_button = document.getElementById("export-button");
         let import_button = document.getElementById("import-button");
+        let file_input = document.getElementById("file_input");
 
         menu_button.onclick = () => {
             if (menu_section.classList.toggle("show")) {
@@ -60,7 +61,34 @@ function main() {
         }
         menu_button.disabled = false;
 
+        export_button.onclick = () => {
+            export_db(db);
+        }
+        export_button.disabled = false;
+
+        file_input.onchange = (e) => {
+            if (e.target.files.length > 0) {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    import_db(db, e.target.result);
+                };
+                reader.onerror = (e) => {
+                    console.error("Error reading file: ", e);
+                    alert("Error reading file!");
+                };
+                reader.readAsText(file);
+                console.log('Selected file:', file.name);
+            }
+        }
+
+        import_button.onclick = () => {
+            file_input.click();
+        }
+        import_button.disabled = false;
+
     }
+
 
     function secToStr(seconds) {
         //let days = Math.floor(seconds / 86400);
@@ -97,6 +125,7 @@ function main() {
 
 
     function export_db(db) {
+
         let data_obj = {
             date_time: (new Date()).toISOString(),
             trackers: [],
@@ -106,15 +135,10 @@ function main() {
         objectStore.openCursor().onsuccess = (e) => {
             let cursor = e.target.result;
             if (cursor) {
-                data_obj.trackers.push({
-                    id: cursor.key,
-                    title: cursor.value.title,
-                    time: cursor.value.time,
-                });
+                data_obj.trackers.push(cursor.value);
                 cursor.continue();
             }
-            // else
-            if (data_obj.trackers.length > 0) {
+            else if (data_obj.trackers.length > 0) {
                 let json_string = JSON.stringify(data_obj, null, 4);
                 let blob = new Blob([json_string], { type: 'application/json' });
                 let blob_url = URL.createObjectURL(blob);
@@ -129,6 +153,26 @@ function main() {
             }
         }
 
+    }
+
+    function import_db(db, import_data) {
+        let json_data = null;
+        try {
+            json_data = JSON.parse(e.target.result);
+        } catch (err) {
+            console.error('Invalid JSON:', err);
+            alert("Error reading file! (Invalid JSON)");
+        }
+
+        let trackers_store = db.transaction(["trackers"], "readwrite").objectStore("trackers");
+        if (json_data) {
+            json_data.trackers.forEach((card_data) => {
+                const update_req = trackers_store.put(card_data);
+                update_req.onerror = (e) => {
+                    console.error("Error importing record from json to DB: ", e);
+                };
+            });
+        }
     }
 
 
