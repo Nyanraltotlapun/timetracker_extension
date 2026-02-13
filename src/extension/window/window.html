@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
-<html>
+<html> 
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TT-app</title>
     <link rel="stylesheet" href="window.css" />
 </head>
@@ -22,19 +23,28 @@
                     <div>Current progress: <time class="current-time"></time></div>
                 </section>
                 <section class="tt-button-section">
-                    <button type="button" title="Start" class="img-button button-left start-pause-button start-button"></button>
-                    <button type="button" title="Remove" class="img-button button-right remove-button"></button>
-                    <button type="button" title="Reset" class="img-button button-right reset-button"></button>
+                    <button type="button" title="Start" class="img-button card-button button-left start-pause-button start-button"></button>
+                    <button type="button" title="Remove" class="img-button card-button button-right remove-button"></button>
+                    <button type="button" title="Reset" class="img-button card-button button-right reset-button"></button>
                 </section>
             </div>
         </li>
     </template>
 
+    <input type="file" id="file_input" accept=".json" style="display: none;" />
+    
     <main>
         <section id="main-section">
-            <section id="add-section">
-                <button id="add-button" type="button" class="img-button" title="Add tracker" disabled></button>
-                <input id="title" type="text" maxlength="100" placeholder="Enter tracker name">
+            <section id="controls-section">
+                <section id="add-section">
+                    <button id="add-button" type="button" class="img-button" title="Add tracker" disabled></button>
+                    <input id="title" type="text" maxlength="100" placeholder="Enter tracker name">
+                    <button id="menu-button" type="button" class="img-button" title="Open menu" disabled></button>
+                </section>
+                <section id="menu-section">
+                    <button id="export-button" type="button" class="img-button" title="Export" disabled></button>
+                    <button id="import-button" type="button" class="img-button" title="Import" disabled></button>
+                </section>
             </section>
             <section>
                 <ul id="card-list" class="tt-list"></ul>

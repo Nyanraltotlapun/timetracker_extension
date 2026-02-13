@@ -8,7 +8,7 @@
    id="Layer_1"
    viewBox="0 0 506.4 506.4"
    xml:space="preserve"
-   sodipodi:docname="reset.svg"
+   sodipodi:docname="add.svg"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -16,8 +16,8 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:cc="http://creativecommons.org/ns#"><defs
-   id="defs5" /><sodipodi:namedview
-   id="namedview5"
+   id="defs3" /><sodipodi:namedview
+   id="namedview3"
    pagecolor="#ffffff"
    bordercolor="#000000"
    borderopacity="0.25"
@@ -26,34 +26,29 @@
    inkscape:pagecheckerboard="true"
    inkscape:deskcolor="#d1d1d1"
    showborder="false"
-   inkscape:zoom="0.89875"
-   inkscape:cx="400"
-   inkscape:cy="399.44367"
+   inkscape:zoom="0.924897"
+   inkscape:cx="399.50394"
+   inkscape:cy="400.04454"
    inkscape:window-width="1556"
    inkscape:window-height="969"
    inkscape:window-x="44"
    inkscape:window-y="0"
    inkscape:window-maximized="1"
    inkscape:current-layer="Layer_1" />
-
-
 <path
-   id="main-circle"
-   style="fill:#FFC52F;stroke:#000000;stroke-opacity:1;stroke-width:8.229;stroke-dasharray:none"
+   id="circle"
+   style="fill:#33A5D2;stroke:#000000;stroke-opacity:1;stroke-width:8.229;stroke-dasharray:none"
    d="M 253.2 8.0002793 C 118 8.0002793 8.0002793 118 8.0002793 253.2 C 8.0002793 388.4 118 498.39972 253.2 498.39972 C 388.4 498.39972 498.39972 388.4 498.39972 253.2 C 498.39972 118 388.4 8.0002793 253.2 8.0002793 z "
-   inkscape:label="main-circle" /><path
-   id="symbol-path2"
-   style="fill:#f4efef;fill-opacity:1;stroke-width:8.229;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
-   d="M 339.81838 165.94367 C 337.77463 165.92492 334.99985 167.19949 331.99985 169.59949 L 231.99945 240.40029 C 226.79945 244.00029 223.59983 248.80057 223.59983 253.60057 C 223.59983 258.00057 226.40021 262.40037 230.80021 265.60037 L 331.99985 336.39994 C 336.39985 339.19994 339.99993 340.39955 341.59993 339.59955 C 343.99993 338.39955 345.20012 334.00042 345.20012 327.20042 L 345.20012 178.80025 C 345.20012 172.40025 343.99993 167.59987 341.59993 166.39987 C 341.09993 166.09987 340.49963 165.94992 339.81838 165.94367 z "
-   inkscape:label="symbol-path2" />
-
+   inkscape:label="circle" />
 <path
-   id="symbol-path1"
-   style="stroke-width:8.229;fill:#f4efef;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-dasharray:none"
-   d="M 178.80025 164.00016 C 176.00025 164.00016 173.19968 166.39959 173.19968 168.79959 L 173.19968 337.19984 C 173.19968 339.59984 175.59968 342.0005 178.39968 342.0005 L 185.19948 342.0005 C 187.99948 342.0005 189.20024 339.59984 189.20024 337.19984 L 189.20024 169.20016 C 189.20024 166.40016 187.20015 164.00016 184.80015 164.00016 L 178.80025 164.00016 z "
-   inkscape:label="symbol-path1" />
+   id="x_p"
+   style="fill:#F4EFEF;stroke:#000000;stroke-opacity:1;stroke-width:8.229;stroke-dasharray:none"
+   d="M 241.59953 137.20028 C 239.19953 137.20028 233.60049 137.60027 233.60049 142.40027 L 233.60049 233.19992 C 233.60049 235.59992 231.99973 237.19944 229.59973 237.19944 L 138.39952 237.19944 C 133.99952 237.19944 129.2 241.19972 129.2 245.19972 L 129.2 261.20028 C 129.2 265.20028 133.99952 269.20056 138.39952 269.20056 L 229.2004 269.20056 C 231.6004 269.20056 233.19992 270.80008 233.19992 273.20008 L 233.19992 364.4003 C 233.19992 368.8003 237.2002 373.20048 241.2002 373.20048 L 257.19952 373.20048 C 261.19952 373.20048 264.80047 368.8003 264.80047 364.4003 L 264.80047 273.20008 C 264.80047 270.80008 266.39999 269.20056 268.79999 269.20056 L 360.00021 269.20056 C 363.20021 269.20056 364.79963 266.40028 364.79963 261.20028 L 364.79963 245.19972 C 364.79963 241.19972 362.39983 237.19944 357.99983 237.19944 L 269.20056 237.19944 C 266.80056 237.19944 265.1998 235.59992 265.1998 233.19992 L 265.1998 142.40027 C 265.1998 137.60027 260.40009 137.20028 257.60009 137.20028 L 241.59953 137.20028 z "
+   inkscape:label="x_p" />
+
+
 <metadata
-   id="metadata5"><rdf:RDF><cc:License
+   id="metadata3"><rdf:RDF><cc:License
        rdf:about="http://artlibre.org/licence/lal"><cc:permits
          rdf:resource="http://creativecommons.org/ns#Reproduction" /><cc:permits
          rdf:resource="http://creativecommons.org/ns#Distribution" /><cc:permits

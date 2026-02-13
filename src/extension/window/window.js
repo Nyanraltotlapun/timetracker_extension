@@ -34,6 +34,7 @@ function main() {
 
         getRecords(db);
         initAddButton(db);
+        initMenuSection(db);
 
         // save jobs status in case of page close or unload.
         window.addEventListener("beforeunload", (e) => {
@@ -41,6 +42,60 @@ function main() {
                 .forEach(element => element.onclick());
         });
     }
+
+    function initMenuSection(db) {
+        let menu_button = document.getElementById("menu-button");
+        let menu_section = document.getElementById("menu-section");
+        let export_button = document.getElementById("export-button");
+        let import_button = document.getElementById("import-button");
+        let file_input = document.getElementById("file_input");
+
+        menu_button.onclick = () => {
+            if (menu_section.classList.toggle("show")) {
+                console.log("Toggle show!");
+            }
+            else {
+                console.log("Toggle Hide!");
+            }
+        }
+        menu_button.disabled = false;
+
+        export_button.onclick = () => {
+            export_db(db);
+        }
+
+        export_button.disabled = false;
+
+        file_input.onchange = (e) => {
+            if (e.target.files.length > 0) {
+                let file = e.target.files[0];
+                // Reset the input value to allow same file selection
+                e.target.value = null;
+                
+                let reader = new FileReader();
+                reader.onload = (e) => {
+                    import_db(db, e.target.result);
+                };
+                reader.onerror = (e) => {
+                    console.error("Error reading file: ", e);
+                    alert("Error reading file!");
+                };
+
+                let confirm_result = confirm("This will replace records if they present in import file. Do you wish to continue?");
+                if (confirm_result === true) {
+                    //console.debug('Selected file:', file.name);
+                    reader.readAsText(file);
+                }
+            }
+        }
+
+        import_button.onclick = () => {
+            file_input.click();
+        }
+        import_button.disabled = false;
+
+    }
+
 
     function secToStr(seconds) {
         //let days = Math.floor(seconds / 86400);
@@ -75,6 +130,59 @@ function main() {
         }
     }
 
+
+    function export_db(db) {
+
+        let data_obj = {
+            date_time: (new Date()).toISOString(),
+            trackers: [],
+        };
+
+        let objectStore = db.transaction(["trackers"]).objectStore("trackers");
+        objectStore.openCursor().onsuccess = (e) => {
+            let cursor = e.target.result;
+            if (cursor) {
+                data_obj.trackers.push(cursor.value);
+                cursor.continue();
+            }
+            else if (data_obj.trackers.length > 0) {
+                let json_string = JSON.stringify(data_obj, null, 4);
+                let blob = new Blob([json_string], { type: 'application/json' });
+                let blob_url = URL.createObjectURL(blob);
+                let a = document.createElement("a");
+                a.href = blob_url;
+                a.download = `timetracker_export_${new Date().toISOString()}.json`;
+                a.click();
+                URL.revokeObjectURL(blob_url);
+            }
+            else {
+                alert("No data to export.");
+            }
+        }
+
+    }
+
+    function import_db(db, import_data) {
+        let json_data = null;
+        try {
+            json_data = JSON.parse(import_data);
+        } catch (err) {
+            console.error('Invalid JSON:', err);
+            alert("Error reading file! (Invalid JSON)");
+        }
+
+        let trackers_store = db.transaction(["trackers"], "readwrite").objectStore("trackers");
+        if (json_data) {
+            json_data.trackers.forEach((card_data) => {
+                const update_req = trackers_store.put(card_data);
+                update_req.onerror = (e) => {
+                    console.error("Error importing record from json to DB: ", e);
+                };
+            });
+            // refreshing window content
+            window.location.reload();
+        }
+    }
 
 
     /*
@@ -180,14 +288,10 @@ function main() {
         let intervalId = null;
 
         let hide_time = 0;
-        let hide_counter_state = 0;
-        let hide_subtotal_time_state = 0;
 
         let on_visibility_change = () => {
             if (document.hidden) {
                 hide_time = Date.now();
-                hide_counter_state = counter;
-                hide_subtotal_time_state = subtotal_time;
             }
             else if (timer_running) {
                 let elapsed_sec = Math.trunc((Date.now() - hide_time) / 1000);
@@ -199,7 +303,7 @@ function main() {
         document.addEventListener("visibilitychange", on_visibility_change);
 
         cb_start_pause.onclick = () => {
-            console.debug("Start-Stop clicked");
+            // console.debug("Start-Stop clicked");
             if (timer_running === false) {
                 timer_running = true;
 
@@ -212,12 +316,16 @@ function main() {
                 intervalId = setInterval(() => {
                     counter++;
                     subtotal_time++;
+
+                    // Every 60 seconds save time to DB
+                    if (counter % 60 === 0) updateTime(db, id, subtotal_time);
+
                     card_current_time.innerText = secToStr(counter);
                     card_subtotal_time.innerText = secToStr(subtotal_time);
                 }, 1000);
             }
             else {
-                console.debug("Start-Stop clicked - stop");
+                // console.debug("Start-Stop clicked - stop");
                 timer_running = false;
 
                 cb_start_pause.setAttribute("data-timer-running", false);
