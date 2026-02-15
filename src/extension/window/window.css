@@ -1,24 +1,23 @@
-
 body {
-    background-color: #fafafa;
-    font-family: "Hack", monospace;
+  background-color: #fafafa;
+  font-family: "Hack", monospace;
 }
 
 header {
-    text-align: center;
-    padding: 1rem;
+  text-align: center;
+  padding: 1rem;
 }
 
 footer {
-    text-align: center;
-    padding: 2rem;
+  text-align: center;
+  padding: 2rem;
 }
 
 #main-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #add-section {
@@ -40,13 +39,16 @@ footer {
   border: 2px solid #d55642;
   border-radius: 2px;
 
-
   height: 0;
   width: 0;
   opacity: 0;
   visibility: hidden;
 
-  transition: width 0.5s ease, height 0.5s ease, opacity 0.3s ease-in-out, visibility 0s 0.3s;
+  transition:
+    width 0.5s ease,
+    height 0.5s ease,
+    opacity 0.3s ease-in-out,
+    visibility 0s 0.3s;
 }
 
 #menu-section.show {
@@ -54,7 +56,10 @@ footer {
   width: 100%;
   opacity: 1;
   visibility: visible;
-  transition: width 0.5s ease, height 0.5s ease, opacity 0.3s ease-in-out;
+  transition:
+    width 0.5s ease,
+    height 0.5s ease,
+    opacity 0.3s ease-in-out;
 }
 
 #add-button {
@@ -66,12 +71,10 @@ footer {
 
 #menu-button {
   aspect-ratio: 1;
-  height:inherit;
+  height: inherit;
   width: auto;
   background-image: url("images/menu.svg");
-
 }
-
 
 #export-button {
   aspect-ratio: 1;
@@ -91,7 +94,7 @@ footer {
 #title {
   height: 1.7rem;
   width: 25ch;
-  border: 2px solid #54B265;
+  border: 2px solid #54b265;
   padding-left: 0.5ch;
   padding-right: 0.5ch;
   transition-duration: 0.4s;
@@ -99,8 +102,8 @@ footer {
 }
 
 #title:focus {
-    border-color: #33A5D2;
-    transition-duration: 0.4s;
+  border-color: #33a5d2;
+  transition-duration: 0.4s;
 }
 
 .time-section {
@@ -125,7 +128,7 @@ footer {
 
 .card-button {
   aspect-ratio: 1;
-  height:inherit;
+  height: inherit;
   width: auto;
   margin: 0.0616rem 0.188rem;
 }
@@ -138,12 +141,12 @@ footer {
 }
 
 .img-button:hover {
-    filter: drop-shadow(0px 0.188rem 0.188rem #363636);
+  filter: drop-shadow(0px 0.188rem 0.188rem #363636);
 }
 
 .img-button:active {
-    filter: drop-shadow(0px 0.0616rem 0.0616rem #363636);
-    transition: filter 0.2s ease;
+  filter: drop-shadow(0px 0.0616rem 0.0616rem #363636);
+  transition: filter 0.2s ease;
 }
 
 .tt-button-section {
@@ -162,30 +165,30 @@ footer {
 }
 
 .tt-list {
-    list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.tt-list>li {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem;
-    border: 1px solid #54B265;
-    border-radius: 2px;
-    box-shadow: 0px 2px 5px grey;
-    background-color: #ffffff;
-    height: auto;
-    width: auto;
+.tt-list > li {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+  border: 1px solid #54b265;
+  border-radius: 2px;
+  box-shadow: 0px 2px 5px grey;
+  background-color: #ffffff;
+  height: auto;
+  width: auto;
 }
 
-.tt-list>li>div {
-    margin: 0.33rem;
-    height: auto;
-    width: auto;
-    border: solid;
-    border-radius: 4px;
-    border-color: #f2f2f2;
-    padding: 0.5rem;
+.tt-list > li > div {
+  margin: 0.33rem;
+  height: auto;
+  width: auto;
+  border: solid;
+  border-radius: 4px;
+  border-color: #f2f2f2;
+  padding: 0.5rem;
 }

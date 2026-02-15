@@ -14,7 +14,10 @@ function main() {
         alert("To make this web app work you should allow it to use IndexedDB.");
     };
 
-    //request to update database version if needed
+    /**
+     * request to update database version if needed
+     * @param {Event & { target: IDBOpenDBRequest }} e
+     */
     openRequest.onupgradeneeded = (e) => {
         let db = e.target.result;
         let objectStore = db.createObjectStore("trackers", {
@@ -23,12 +26,15 @@ function main() {
         });
     };
 
-    //in case of success db opening function getRecords() gets db records and shows them as cards
-    //in case if button to add new travker is clicked initAddButton() adds new db record and shows it as a card
+    /**
+     * in case of success db opening function getRecords() gets db records and shows them as cards
+     * in case if button to add new travker is clicked initAddButton() adds new db record and shows it as a card
+     * @param {Event & { target: IDBOpenDBRequest }} e
+     */
     openRequest.onsuccess = (e) => {
         let db = e.target.result;
 
-        db.onerror = (e) => {
+        db.onerror = (/** @type {Event & { target: IDBDatabase }} */ e) => {
             alert("Smth went wrong");
         }
 
@@ -43,6 +49,9 @@ function main() {
         });
     }
 
+    /**
+     * @param {IDBDatabase} db
+     */
     function initMenuSection(db) {
         let menu_button = document.getElementById("menu-button");
         let menu_section = document.getElementById("menu-section");
@@ -66,17 +75,20 @@ function main() {
 
         export_button.disabled = false;
 
+        /**
+         * @param {Event & { target: HTMLInputElement }} e
+         */
         file_input.onchange = (e) => {
             if (e.target.files.length > 0) {
                 let file = e.target.files[0];
                 // Reset the input value to allow same file selection
                 e.target.value = null;
-                
+
                 let reader = new FileReader();
-                reader.onload = (e) => {
+                reader.onload = (/** @type {ProgressEvent<FileReader>} */ e) => {
                     import_db(db, e.target.result);
                 };
-                reader.onerror = (e) => {
+                reader.onerror = (/** @type {ProgressEvent<FileReader>} */ e) => {
                     console.error("Error reading file: ", e);
                     alert("Error reading file!");
                 };
@@ -96,7 +108,10 @@ function main() {
 
     }
 
-
+    /**
+     * @param {number} seconds
+     * @returns {string} time string in format "hh:mm:ss"
+     */
     function secToStr(seconds) {
         //let days = Math.floor(seconds / 86400);
         let hours = Math.floor(seconds / 3600);
@@ -111,14 +126,14 @@ function main() {
         return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
     }
 
-    /*
-    Params: db object
-    Function gets existing records from the db using openCursor() method
-    Function gets id, title, time from each record and pass them to showCard() function
-    */
+    /**
+     * Function gets existing records from the db using openCursor() method
+     * Function gets id, title, time from each record and pass them to showCard() function
+     * @param {IDBDatabase} db
+     */
     function getRecords(db) {
         let objectStore = db.transaction(["trackers"]).objectStore("trackers");
-        objectStore.openCursor().onsuccess = (e) => {
+        objectStore.openCursor().onsuccess = (/** @type {Event & { target: IDBRequest }} */ e) => {
             let cursor = e.target.result;
             if (cursor) {
                 let id = cursor.key;
@@ -130,7 +145,9 @@ function main() {
         }
     }
 
-
+    /**
+     * @param {IDBDatabase} db
+     */
     function export_db(db) {
 
         let data_obj = {
@@ -139,7 +156,7 @@ function main() {
         };
 
         let objectStore = db.transaction(["trackers"]).objectStore("trackers");
-        objectStore.openCursor().onsuccess = (e) => {
+        objectStore.openCursor().onsuccess = (/** @type {Event & { target: IDBRequest }} */ e) => {
             let cursor = e.target.result;
             if (cursor) {
                 data_obj.trackers.push(cursor.value);
@@ -159,9 +176,12 @@ function main() {
                 alert("No data to export.");
             }
         }
-
     }
 
+    /**
+     * @param {IDBDatabase} db
+     * @param {string} import_data imported file content as string
+     */
     function import_db(db, import_data) {
         let json_data = null;
         try {
@@ -175,7 +195,7 @@ function main() {
         if (json_data) {
             json_data.trackers.forEach((card_data) => {
                 const update_req = trackers_store.put(card_data);
-                update_req.onerror = (e) => {
+                update_req.onerror = (/** @type {Event & { target: IDBRequest }} */ e) => {
                     console.error("Error importing record from json to DB: ", e);
                 };
             });
@@ -185,16 +205,17 @@ function main() {
     }
 
 
-    /*
-    Params: db object
-    Function initialises addNewTracker() function by clicking the add button (id="add-button")
-    Function addNewTracker() gets text from the title input,
-    puts it to the tracker object and passes tracker object to the add request
-    In case of add request success showCard() function is initialised and dosplays
-    new tracker card with given title
-    */
+    /**
+     * Function initializes addNewTracker() function by clicking the add button (id="add-button")
+     * Function addNewTracker() gets text from the title input,
+     * puts it to the tracker object and passes tracker object to the add request
+     * In case of add request success showCard() function is initialized and displayed
+     * new tracker card with given title
+     * @param {IDBDatabase} db
+     */
     function initAddButton(db) {
         function addNewTracker() {
+            /** @type {string} */
             let name = document.getElementById("title").value;
             if (name.trim().length === 0) {
                 alert("Please enter title for your tracker.");
@@ -218,18 +239,19 @@ function main() {
         addButton.onclick = addNewTracker;
         addButton.disabled = false;
 
-        document.getElementById("title").onkeydown = (e) => {
+        document.getElementById("title").onkeydown = (/** @type {KeyboardEvent} */ e) => {
             if (e.key == "Enter") {
                 addNewTracker();
             }
         }
     }
 
-    /*
-    Params: id of the tracker to remove, db object
-    Parameters are passed to the delete request in order to remove record from the database
-    In case of success appropriate card is removed from the view
-    */
+    /**
+     * Parameters are passed to the delete request in order to remove record from the database
+     * In case of success appropriate card is removed from the view
+     * @param {number} id id of the tracker to remove
+     * @param {IDBDatabase} db
+     */
     function removeTracker(id, db) {
         let delReq = db.transaction(["trackers"], "readwrite").objectStore("trackers").delete(parseInt(id));
         delReq.onsuccess = (e) => {
@@ -237,12 +259,15 @@ function main() {
         }
     }
 
-    /*
-    Params: id of the trakcer to update, time value, db object, element where the time updating will be applied
-    Function gets tracker record by id. If case of success time field of the tracker object is updated by adding new time value
-    New object is passed to the method put in order to update the record
-    In case of success new time is shown next the commonTimeElement element on the tracker card
-    */
+    /**
+     * Params: id of the tracker to update, time value, db object, element where the time updating will be applied
+     * Function gets tracker record by id. If case of success time field of the tracker object is updated by adding new time value
+     * New object is passed to the method put in order to update the record
+     * In case of success new time is shown next the commonTimeElement element on the tracker card
+     * @param {IDBDatabase} db
+     * @param {number} id id of the tracker to update
+     * @param {number} newTime new time value to update in seconds
+     */
     function updateTime(db, id, newTime) {
         let objectStoreReq = db.transaction(['trackers'], "readwrite").objectStore('trackers').get(parseInt(id));
 
