@@ -5,6 +5,7 @@
 Extention that allows to track time spent for certain projects. No need to keep in mind how much time was already spent for the previous session.
 
 ![Extension page](preview.png)
+![Extension page in dark mode](preview_dark.png)
 
 ## Detailed description
 
