@@ -28,7 +28,7 @@ function main() {
 
     /**
      * in case of success db opening function getRecords() gets db records and shows them as cards
-     * in case if button to add new travker is clicked initAddButton() adds new db record and shows it as a card
+     * in case if button to add new tracker is clicked initAddButton() adds new db record and shows it as a card
      * @param {Event & { target: IDBOpenDBRequest }} e
      */
     openRequest.onsuccess = (e) => {
@@ -192,7 +192,7 @@ function main() {
         }
 
         let trackers_store = db.transaction(["trackers"], "readwrite").objectStore("trackers");
-        if (json_data) {
+        if (json_data && Array.isArray(json_data.trackers)) {
             json_data.trackers.forEach((card_data) => {
                 const update_req = trackers_store.put(card_data);
                 update_req.onerror = (/** @type {Event & { target: IDBRequest }} */ e) => {
@@ -201,6 +201,8 @@ function main() {
             });
             // refreshing window content
             window.location.reload();
+        } else {
+            alert("Error reading file! (Invalid data structure)");
         }
     }
 
